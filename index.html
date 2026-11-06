@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لعيون روان قلبي ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+        }
+        body {
+            background-color: #fce4ec;
+            color: #4a2c3d;
+            min-height: 100vh;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        /* Floating Hearts Animation */
+        .hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .heart {
+            position: absolute;
+            color: rgba(255, 105, 135, 0.6);
+            font-size: 20px;
+            animation: floatUp 5s linear infinite;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+            50% { opacity: 0.9; }
+            100% { transform: translateY(-10vh) scale(1.3); opacity: 0; }
+        }
+
+        /* Screen Styles */
+        .screen {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            z-index: 10;
+            padding: 20px;
+        }
+        .hidden {
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(0.95);
+            display: none !important;
+        }
+
+        /* Password Screen matching video */
+        #password-screen {
+            background: #fce4ec;
+        }
+        .profile-img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #ff758c;
+            box-shadow: 0 0 20px rgba(255, 117, 140, 0.4);
+            margin-bottom: 15px;
+        }
+        .pass-card {
+            background: rgba(255, 255, 255, 0.85);
+            padding: 30px;
+            border-radius: 30px;
+            border: 2px solid #ffb6c1;
+            text-align: center;
+            max-width: 350px;
+            width: 100%;
+            box-shadow: 0 10px 30px rgba(255, 182, 193, 0.5);
+            backdrop-filter: blur(10px);
+        }
+        .pass-card h2 {
+            font-size: 20px;
+            color: #d81b60;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+        .pass-card p {
+            font-size: 14px;
+            color: #ad1457;
+            margin-bottom: 20px;
+        }
+        .pass-card input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 15px;
+            border: 1px solid #ff80ab;
+            background: #fff;
+            color: #333;
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 15px;
+            outline: none;
+        }
+        .pass-card button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(45deg, #ff758c, #ff7eb3);
+            border: none;
+            border-radius: 15px;
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 117, 140, 0.4);
+            transition: 0.3s;
+        }
+        .pass-card button:hover {
+            transform: translateY(-2px);
+        }
+        .error-msg {
+            color: #c2185b;
+            margin-top: 10px;
+            font-size: 13px;
+            display: none;
+        }
+
+        /* Main Content Screen with blurred background matching video */
+        #main-screen {
+            background: linear-gradient(to bottom, rgba(252, 228, 236, 0.85), rgba(252, 228, 236, 0.95)), url('https://lh3.googleusercontent.com/d/1yclYf9WzDmioTCh0j5VehFQ5QA3cApRM');
+            background-size: cover;
+            background-position: center;
+            justify-content: flex-start;
+            overflow-y: auto;
+            padding-bottom: 120px;
+        }
+        .container {
+            max-width: 650px;
+            width: 100%;
+            margin: auto;
+            text-align: center;
+            padding: 20px;
+            z-index: 5;
+        }
+        .card-box {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 20px;
+            border: 1px solid #ffb6c1;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 20px rgba(255, 182, 193, 0.3);
+            text-align: center;
+        }
+        .card-box p {
+            font-size: 17px;
+            line-height: 1.8;
+            color: #880e4f;
+            font-weight: 600;
+        }
+        .next-btn {
+            background: linear-gradient(45deg, #ff758c, #ff7eb3);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 20px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+            box-shadow: 0 4px 10px rgba(255, 117, 140, 0.4);
+        }
+
+        /* Counter Section */
+        .counter-box {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #ffb6c1;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 20px rgba(255, 182, 193, 0.3);
+        }
+        .counter-box h3 {
+            color: #d81b60;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        .time-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+        }
+        .time-item {
+            background: #fff0f3;
+            padding: 10px;
+            border-radius: 12px;
+            border: 1px solid #ffccd5;
+        }
+        .time-item span {
+            display: block;
+            font-size: 18px;
+            font-weight: 700;
+            color: #c2185b;
+        }
+        .time-item label {
+            font-size: 11px;
+            color: #880e4f;
+        }
+
+        /* Milestones */
+        .milestones {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ffb6c1;
+            text-align: right;
+        }
+        .milestones h3 {
+            text-align: center;
+            color: #d81b60;
+            margin-bottom: 12px;
+            font-size: 17px;
+        }
+        .milestone-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #ffebee;
+        }
+        .milestone-item i {
+            color: #ff4b6e;
+            margin-left: 10px;
+            font-size: 16px;
+        }
+        .milestone-item div span {
+            display: block;
+            font-size: 13px;
+            color: #880e4f;
+        }
+        .milestone-item div strong {
+            font-size: 15px;
+            color: #c2185b;
+        }
+
+        /* Gallery & Cards */
+        .gallery-card, .message-card, .video-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ffb6c1;
+            box-shadow: 0 5px 20px rgba(255, 182, 193, 0.3);
+        }
+        .gallery-img {
+            width: 100%;
+            max-height: 380px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 10px;
+            border: 2px solid #ffccd5;
+        }
+        .gallery-caption {
+            font-size: 16px;
+            color: #ad1457;
+            font-weight: 600;
+        }
+        .message-card p {
+            font-size: 16px;
+            line-height: 1.9;
+            color: #880e4f;
+            text-align: justify;
+            white-space: pre-line;
+        }
+        .video-card video {
+            width: 100%;
+            border-radius: 15px;
+            outline: none;
+        }
+
+        /* Bottom Music Player matching video style */
+        .music-player {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 92%;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.92);
+            border: 1.5px solid #ffb6c1;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        .music-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .music-info img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ff758c;
+            animation: rotateVinyl 6s linear infinite;
+        }
+        @keyframes rotateVinyl {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .music-details h4 {
+            font-size: 13px;
+            color: #c2185b;
+            font-weight: 700;
+        }
+        .music-details p {
+            font-size: 11px;
+            color: #880e4f;
+        }
+        .music-controls button {
+            background: #ff758c;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(255, 117, 140, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Hearts -->
+    <div class="hearts-container" id="hearts"></div>
+
+    <!-- Password Screen -->
+    <div class="screen" id="password-screen">
+        <img src="https://lh3.googleusercontent.com/d/1A80SXKCmlI56WANdRdouk9D0iA08p-MB" alt="Profile" class="profile-img">
+        <div class="pass-card">
+            <h2>جاهزه 🫡</h2>
+            <p>كل اللي بينا هنا 😍</p>
+            <input type="password" id="pass-input" placeholder="password">
+            <button onclick="checkPassword()">Unlock 🔓</button>
+            <div class="error-msg" id="error-msg">كلمة المرور مش صحيحة، جربي تاني!</div>
+        </div>
+    </div>
+
+    <!-- Main Content Screen -->
+    <div class="screen hidden" id="main-screen">
+        <div class="container">
+            
+            <!-- Welcome Message -->
+            <div class="card-box">
+                <p>بحبك بكل ما فيا ي حبوبتي وادينا قربنا نكمل 3 سنين سوا وهندخل ف الرابعه قريبا وتعالي نشوف عملتلك اي😍💗</p>
+                <button class="next-btn" onclick="scrollToNext()">next 💖</button>
+            </div>
+
+            <!-- Love Counter -->
+            <div class="counter-box" id="counter-section">
+                <h3>بدايتنا سوا ✨</h3>
+                <div class="time-grid">
+                    <div class="time-item">
+                        <span id="days">0</span>
+                        <label>يوم</label>
+                    </div>
+                    <div class="time-item">
+                        <span id="hours">0</span>
+                        <label>ساعة</label>
+                    </div>
+                    <div class="time-item">
+                        <span id="minutes">0</span>
+                        <label>دقيقة</label>
+                    </div>
+                    <div class="time-item">
+                        <span id="seconds">0</span>
+                        <label>ثانية</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Milestones -->
+            <div class="milestones">
+                <h3>محطات مميزة في حبنا 💖</h3>
+                <div class="milestone-item">
+                    <i class="fa-solid fa-calendar-heart"></i>
+                    <div>
+                        <strong>بدايتنا سوا</strong>
+                        <span>28/3/2024</span>
+                    </div>
+                </div>
+                <div class="milestone-item">
+                    <i class="fa-solid fa-moon"></i>
+                    <div>
+                        <strong>كان اول عيد رمضان لينا مع بعض سوا</strong>
+                        <span>10/4/2024</span>
+                    </div>
+                </div>
+                <div class="milestone-item">
+                    <i class="fa-solid fa-heart"></i>
+                    <div>
+                        <strong>اول مره اقلك بحبك</strong>
+                        <span>14/5/2024</span>
+                    </div>
+                </div>
+                <div class="milestone-item">
+                    <i class="fa-solid fa-phone-volume"></i>
+                    <div>
+                        <strong>أول مكالمه فون</strong>
+                        <span>20/5/2024</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery Photos -->
+            <div class="gallery-card">
+                <img src="https://lh3.googleusercontent.com/d/1mE2V5yqpTTd7683LLUfu9DSwuepSd67r" alt="Photo 1" class="gallery-img">
+                <div class="gallery-caption">ربنا يخليكي ي عسولتي 💖</div>
+            </div>
+
+            <div class="gallery-card">
+                <img src="https://lh3.googleusercontent.com/d/19pUFqmblgserEYbD_aR6QqZIkS399M9H" alt="Photo 2" class="gallery-img">
+                <div class="gallery-caption">أجمل ذكرياتنا سوا ✨</div>
+            </div>
+
+            <div class="gallery-card">
+                <img src="https://lh3.googleusercontent.com/d/17ADC3K2i2CsDvFl8XK9uuDxPGO-Garpp" alt="Photo 3" class="gallery-img">
+                <div class="gallery-caption">ضحكتك اللي بتنور دنياي 😍</div>
+            </div>
+
+            <div class="gallery-card">
+                <img src="https://lh3.googleusercontent.com/d/1Y7GfEEt3WnKf0cyx0CRpgdZSMREE9d-Q" alt="Photo 4" class="gallery-img">
+                <div class="gallery-caption">أحلى أيام العمر معاكي 🫂</div>
+            </div>
+
+            <div class="gallery-card">
+                <img src="https://lh3.googleusercontent.com/d/1l5qc13uONl5D7AuzqPNcsmsiKYt7HIgy" alt="Photo 5" class="gallery-img">
+                <div class="gallery-caption">زي ما طلبتي ي اميرتي تم التنفيذ 👑</div>
+            </div>
+
+            <!-- Video Section -->
+            <div class="video-card">
+                <video controls src="https://files.catbox.moe/1xbTOcanaDIk1e2-TIKG6FALSivd8iMQE.mp4" crossorigin="anonymous"></video>
+            </div>
+
+            <!-- Romantic Message -->
+            <div class="message-card">
+                <p>دلوعتي مش عارف اوصفلك انتي بالنسبالي اي بس كل اللي اعرفه انك بقيتي قلبي كله اخدتي كل تفكيري وبقيتي كل حاجه حلوه بتحصل ف يومي ي قلبي❤️🫂
+
+وجودك ف حياتي فرق معايا كتير قوي بقيت اشوف الدنيا بشكل تاني وبقيت احس ان فيه حد يستاهل اني أتمسك بيه مهما حصل وشخص نفسي افضل جنبه مهما الدنيا اتغيرت بينا انتي الشخص دا ي قطتي ❤️✨
+
+انا مش عايز منك غير انك تفضلي معايا نعدّي سوا الأيام الحلوه والصعبه نضحك سوا ونطمن بعض وقت الخوف ونفضل سند لبعض مهما الظروف حاولت تبعدنا ي بابا🥹❤️
+
+مش مهم عندي الدنيا تديني اي طول ما انتي فيها ومعايا ي حبي ومش مهم الناس تقول اي طول ما إحنا فاهمين بعض وحاسين ببعض ي بنوتة قلبي
+
+انا بحبك بطريقه يمكن الكلام ميقدرش يوصفها بحب تفاصيلك كلامك ضحكتك وحته ابسط الحاجات اللي يمكن انتي متاخدش بالك منها بالنسبالي بتفرق كتير ي حبوبتي ❤️🫶🏻
+
+وجودك لوحده كفايه يخلي يومي احلى ورساله منك قادره تغير مود يوم كامل وصوتك بيطمن قلبي بطريقه مفيش حاجه تانيه تقدر تعملها ي نور عيوني 💗 🫂
+
+ولو خيروني بين الف حاجه حلوه ف الدنيا وبين اني أفضل معاكي هختارك انتي مش علشان انتي أحسن انتي الشخص اللي قلبي ارتاحله واختاره من وسط كل الناس ي سارقة قلبي❤️🔐
+
+انا مش بوعدك ان حياتنا هتكون من غير مشاكل اكيد لكن بتمنى نفضل نختار بعض كل يوم ونتمسك ببعض مهما حصل ونفضل فاكرين إن الحب مش مجرد كلام بيتقال الحب مواقف واهتمام وصدق وأمان ي روانتي🥹❤️
+
+وف الآخر كل اللي نفسي فيه انك تفضلي أجمل حكايه ف عمري وأقرب شخص لقلبي وإن الأيام مهما طالت بينا أفضل أبصلك بنفس اللهفه وأحبك بنفس الشغف وأحمد ربنا إنك بقيتي ف حياتي لأن ف ناس بنقابلها بالصدفه لكن بتبقى أجمل حاجه حصلتلنا من غير ميعاد ي قطوطتي❤️❤️</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Bottom Music Player matching video -->
+    <div class="music-player">
+        <div class="music-info">
+            <img src="https://lh3.googleusercontent.com/d/1A80SXKCmlI56WANdRdouk9D0iA08p-MB" alt="Album Art">
+            <div class="music-details">
+                <h4>انا قلبي عاشق للغنا من يوم ما حبيتك❤️</h4>
+                <p>روان & علي</p>
+            </div>
+        </div>
+        <div class="music-controls">
+            <button id="play-btn" onclick="togglePlay()"><i class="fa-solid fa-play" id="play-icon"></i></button>
+        </div>
+    </div>
+
+    <audio id="bg-audio" loop src="https://files.catbox.moe/m7hv6n.mp3" crossorigin="anonymous"></audio>
+
+    <script>
+        function checkPassword() {
+            const pass = document.getElementById('pass-input').value.trim();
+            if (pass === "love" || pass === "2803" || pass === "روان" || pass === "rawan") {
+                document.getElementById('password-screen').classList.add('hidden');
+                document.getElementById('main-screen').classList.remove('hidden');
+                const audio = document.getElementById('bg-audio');
+                audio.play().catch(e => console.log("Audio autoplay restricted"));
+                document.getElementById('play-icon').className = "fa-solid fa-pause";
+            } else {
+                document.getElementById('error-msg').style.display = 'block';
+            }
+        }
+
+        function scrollToNext() {
+            document.getElementById('counter-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        const audio = document.getElementById('bg-audio');
+        const playIcon = document.getElementById('play-icon');
+        function togglePlay() {
+            if (audio.paused) {
+                audio.play();
+                playIcon.className = "fa-solid fa-pause";
+            } else {
+                audio.pause();
+                playIcon.className = "fa-solid fa-play";
+            }
+        }
+
+        function createHeart() {
+            const heartsContainer = document.getElementById('hearts');
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '<i class="fa-solid fa-heart"></i>';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+            heart.style.fontSize = (Math.random() * 15 + 15) + 'px';
+            heartsContainer.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+        setInterval(createHeart, 250);
+
+        const startDate = new Date('2024-03-28T00:00:00');
+        function updateTimer() {
+            const now = new Date();
+            const diff = now - startDate;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diff / 1000 / 60) % 60);
+            const seconds = Math.floor((diff / 1000) % 60);
+
+(`days`).innerText = days;
+(`hours`).innerText = hours;
+(`minutes`).innerText = minutes;
+(`seconds`).innerText = seconds;
+        }
+        setInterval(up

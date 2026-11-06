@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لعيون روانتي قلبي ❤️</title>
+    <title>لعيون روان قلبي ❤️</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -23,7 +23,7 @@
             align-items: center;
             justify-content: center;
         }
-        /* Floating Hearts Animation - pointer-events: none ضروري عشان اللمس يشتغل وراها */
+        /* Floating Hearts Animation */
         .hearts-container {
             position: fixed;
             top: 0;
@@ -148,7 +148,7 @@
             align-items: center;
             justify-content: flex-start;
             overflow-y: auto;
-            padding: 20px 20px 130px 20px;
+            padding: 20px 20px 140px 20px;
             z-index: 10;
         }
         .container {
@@ -267,32 +267,60 @@
             outline: none;
         }
 
-        /* Bottom Music Player */
+        /* Bottom Music Player matching video design */
         .music-player {
             position: fixed;
-            bottom: 10px;
+            bottom: 12px;
             left: 50%;
             transform: translateX(-50%);
             width: 92%;
-            max-width: 600px;
+            max-width: 580px;
             background: rgba(255, 255, 255, 0.95);
             border: 1.5px solid #ffb6c1;
-            padding: 10px 15px;
+            padding: 8px 15px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             z-index: 9999;
-            border-radius: 30px;
+            border-radius: 35px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.15);
         }
-        .music-info {
+        .music-left {
             display: flex;
             align-items: center;
             gap: 10px;
         }
-        .music-info img {
-            width: 40px;
-            height: 40px;
+        .wave-icon {
+            color: #ff758c;
+            font-size: 14px;
+        }
+        .music-details h4 {
+            font-size: 13px;
+            color: #c2185b;
+            font-weight: 700;
+        }
+        .music-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .music-controls button {
+            background: #ff758c;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            color: white;
+            font-size: 13px;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(255, 117, 140, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .music-thumb {
+            width: 35px;
+            height: 35px;
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid #ff758c;
@@ -301,26 +329,6 @@
         @keyframes rotateVinyl {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
-        }
-        .music-details h4 {
-            font-size: 13px;
-            color: #c2185b;
-            font-weight: 700;
-        }
-        .music-details p {
-            font-size: 11px;
-            color: #880e4f;
-        }
-        .music-controls button {
-            background: #ff758c;
-            border: none;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            color: white;
-            font-size: 14px;
-            cursor: pointer;
-            box-shadow: 0 2px 8px rgba(255, 117, 140, 0.5);
         }
     </style>
 </head>
@@ -333,8 +341,8 @@
     <div class="screen" id="password-screen">
         <img src="https://lh3.googleusercontent.com/d/1A80SXKCmlI56WANdRdouk9D0iA08p-MB" alt="Profile" class="profile-img">
         <div class="pass-card">
-            <h2>جاهزه ي حتتي 🫡</h2>
-            <p>حاجه بسيطه كدا هنا 😍</p>
+            <h2>جاهزه 🫡</h2>
+            <p>كل اللي بينا هنا 😍</p>
             <input type="password" id="pass-input" placeholder="password">
             <button onclick="checkPassword()">Unlock 🔓</button>
             <div class="error-msg" id="error-msg">كلمة المرور مش صحيحة، جربي تاني!</div>
@@ -462,17 +470,19 @@
         </div>
     </div>
 
-    <!-- Bottom Music Player -->
+    <!-- Bottom Music Player matching video style -->
     <div class="music-player">
-        <div class="music-info">
-            <img src="https://lh3.googleusercontent.com/d/1A80SXKCmlI56WANdRdouk9D0iA08p-MB" alt="Album Art">
+        <div class="music-left">
+            <i class="fa-solid fa-wave-square wave-icon"></i>
             <div class="music-details">
                 <h4>انا قلبي عاشق للغنا من يوم ما حبيتك❤️</h4>
-                <p>روان & علي</p>
             </div>
         </div>
-        <div class="music-controls">
-            <button id="play-btn" onclick="togglePlay()"><i class="fa-solid fa-play" id="play-icon"></i></button>
+        <div class="music-right">
+            <div class="music-controls">
+                <button id="play-btn" onclick="togglePlay()"><i class="fa-solid fa-play" id="play-icon"></i></button>
+            </div>
+            <img src="https://lh3.googleusercontent.com/d/1A80SXKCmlI56WANdRdouk9D0iA08p-MB" alt="Album Art" class="music-thumb">
         </div>
     </div>
 

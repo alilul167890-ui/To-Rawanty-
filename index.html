@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لعيون روانتي قلبي ❤️</title>
+    <title>لعيون كوكو عشق قلبي ❤️</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -275,13 +275,14 @@
             transform: translateX(-50%);
             width: 92%;
             max-width: 580px;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.98);
             border: 1.5px solid #ffb6c1;
             padding: 8px 15px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            z-index: 9999;
+            z-index: 99999;
+            pointer-events: auto !important;
             border-radius: 35px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.15);
         }
@@ -307,12 +308,14 @@
         .music-controls button {
             background: #ff758c;
             border: none;
-            width: 35px;
-            height: 35px;
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
             color: white;
-            font-size: 13px;
+            font-size: 14px;
             cursor: pointer;
+            pointer-events: auto !important;
+            z-index: 100000;
             box-shadow: 0 2px 6px rgba(255, 117, 140, 0.4);
             display: flex;
             align-items: center;
@@ -341,7 +344,7 @@
     <div class="screen" id="password-screen">
         <img src="https://lh3.googleusercontent.com/d/1A80SXKCmlI56WANdRdouk9D0iA08p-MB" alt="Profile" class="profile-img">
         <div class="pass-card">
-            <h2>جاهزه ي حتتي 🫡</h2>
+            <h2>جاهزه ي قطتي بعد التأخير دا 🫡</h2>
             <p>في حاجه حلوه هنا 😍</p>
             <input type="password" id="pass-input" placeholder="password">
             <button onclick="checkPassword()">Unlock 🔓</button>
@@ -384,7 +387,7 @@
 
             <!-- Milestones -->
             <div class="milestones">
-                <h3>تواريخ مميزة في حبنا 💖</h3>
+                <h3>تواريخ  مميزة في حبنا 💖</h3>
                 <div class="milestone-item">
                     <i class="fa-solid fa-calendar-heart"></i>
                     <div>
@@ -423,17 +426,17 @@
 
             <div class="gallery-card">
                 <img src="https://lh3.googleusercontent.com/d/19pUFqmblgserEYbD_aR6QqZIkS399M9H" alt="Photo 2" class="gallery-img">
-                <div class="gallery-caption">الضحكه اللي بتوديني ف عالم تاني دي ✨</div>
+                <div class="gallery-caption">الضحكه اللي بتوديني لعالم تاني دي✨</div>
             </div>
 
             <div class="gallery-card">
                 <img src="https://lh3.googleusercontent.com/d/17ADC3K2i2CsDvFl8XK9uuDxPGO-Garpp" alt="Photo 3" class="gallery-img">
-                <div class="gallery-caption">العيون اللي سحرالي دي برضه كمان😍</div>
+                <div class="gallery-caption">العيون اللي سحرالي دي ي جدعان 😍</div>
             </div>
 
             <div class="gallery-card">
                 <img src="https://lh3.googleusercontent.com/d/1Y7GfEEt3WnKf0cyx0CRpgdZSMREE9d-Q" alt="Photo 4" class="gallery-img">
-                <div class="gallery-caption">جمالك وجمال البحر 🫂</div>
+                <div class="gallery-caption">جمالك اتتي والبحر تحفه ي قطتي 🫂</div>
             </div>
 
             <div class="gallery-card">
@@ -441,9 +444,9 @@
                 <div class="gallery-caption">زي ما طلبتي ي اميرتي تم التنفيذ 👑</div>
             </div>
 
-            <!-- Video Section with user's catbox link -->
+            <!-- Video Section with Catbox Link -->
             <div class="video-card">
-                <video controls src="https://files.catbox.moe/u6woen.mp4" crossorigin="anonymous"></video>
+                <video controls playsinline preload="metadata" src="https://files.catbox.moe/u6woen.mp4" crossorigin="anonymous"></video>
             </div>
 
             <!-- Romantic Message -->
@@ -470,23 +473,23 @@
         </div>
     </div>
 
-    <!-- Bottom Music Player matching video style -->
+    <!-- Bottom Music Player -->
     <div class="music-player">
         <div class="music-left">
             <i class="fa-solid fa-wave-square wave-icon"></i>
             <div class="music-details">
-                <h4>انت تؤمر ونا انفذ😂 ❤️</h4>
+                <h4>انتي تؤمري ونا انفذ ي معالي الباشا🙄❤️</h4>
             </div>
         </div>
         <div class="music-right">
             <div class="music-controls">
-                <button id="play-btn" onclick="togglePlay()"><i class="fa-solid fa-play" id="play-icon"></i></button>
+                <button id="play-btn"><i class="fa-solid fa-play" id="play-icon"></i></button>
             </div>
             <img src="https://lh3.googleusercontent.com/d/1A80SXKCmlI56WANdRdouk9D0iA08p-MB" alt="Album Art" class="music-thumb">
         </div>
     </div>
 
-    <audio id="bg-audio" loop src="https://files.catbox.moe/b4rdcs.mp3" crossorigin="anonymous"></audio>
+    <audio id="bg-audio" loop src="https://files.catbox.moe/m7hv6n.mp3" crossorigin="anonymous"></audio>
 
     <script>
         function checkPassword() {
@@ -494,9 +497,9 @@
             if (pass === "love" || pass === "2803" || pass === "روان" || pass === "rawan") {
                 document.getElementById('password-screen').classList.add('hidden');
                 document.getElementById('main-screen').classList.remove('hidden');
-                const audio = document.getElementById('bg-audio');
-                audio.play().catch(e => console.log("Audio autoplay restricted"));
-                document.getElementById('play-icon').className = "fa-solid fa-pause";
+                audio.play().then(() => {
+                    playIcon.className = "fa-solid fa-pause";
+                }).catch(e => console.log("Audio autoplay restricted"));
             } else {
                 document.getElementById('error-msg').style.display = 'block';
             }
@@ -508,16 +511,23 @@
         }
 
         const audio = document.getElementById('bg-audio');
+        const playBtn = document.getElementById('play-btn');
         const playIcon = document.getElementById('play-icon');
-        function togglePlay() {
+
+        function togglePlay(e) {
+            if (e) e.preventDefault();
             if (audio.paused) {
-                audio.play();
-                playIcon.className = "fa-solid fa-pause";
+                audio.play().then(() => {
+                    playIcon.className = "fa-solid fa-pause";
+                }).catch(err => console.log("Playback error:", err));
             } else {
                 audio.pause();
                 playIcon.className = "fa-solid fa-play";
             }
         }
+
+        playBtn.addEventListener('click', togglePlay);
+        playBtn.addEventListener('touchend', togglePlay);
 
         function createHeart() {
             const heartsContainer = document.getElementById('hearts');
@@ -547,11 +557,4 @@
 
             document.getElementById('days').innerText = days;
             document.getElementById('hours').innerText = hours;
-            document.getElementById('minutes').innerText = minutes;
-            document.getElementById('seconds').innerText = seconds;
-        }
-        setInterval(updateTimer, 1000);
-        updateTimer();
-    </script>
-</body>
-</html>
+            document.getElementById('minutes')
